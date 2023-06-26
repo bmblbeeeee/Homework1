@@ -3,38 +3,45 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
 int main() {
-    ifstream input("in.txt");
-    ofstream output("out.txt");
+    std::ifstream inputFile("in.txt");
+    std::ofstream outputFile("out.txt");
 
     int n, m;
-    input >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        input >> a[i];
+    inputFile >> n;
+
+    std::vector<int> arrN(n);
+    for (int i = 0; i < n; ++i) {
+        inputFile >> arrN[i];
     }
 
-    input >> m;
-    vector<int> b(m);
-    for (int i = 0; i < m; i++) {
-        input >> b[i];
+    inputFile >> m;
+
+    std::vector<int> arrM(m);
+    for (int i = 0; i < m; ++i) {
+        inputFile >> arrM[i];
     }
 
-    reverse(a.begin(), a.end());
-    output << m << endl;
-    for (int i = 0; i < m; i++) {
-        output << b[i] << " ";
-    }
-    output << endl;
+    
+    std::rotate(arrM.rbegin(), arrM.rbegin() + 1, arrM.rend());
+    std::rotate(arrN.begin(), arrN.begin() + 1, arrN.end());
 
-    reverse(b.begin(), b.end());
-    output << n << endl;
-    for (int i = 1; i < n; i++) {
-        output << a[i] << " ";
+    
+    outputFile << m << std::endl;
+    for (const auto& num : arrM) {
+        outputFile << num << " ";
     }
-    output << a[0] << endl;
+    outputFile << std::endl;
+
+    outputFile << n << std::endl;
+    for (const auto& num : arrN) {
+        outputFile << num << " ";
+    }
+    outputFile << std::endl;
+
+    inputFile.close();
+    outputFile.close();
 
     return 0;
 }
+
