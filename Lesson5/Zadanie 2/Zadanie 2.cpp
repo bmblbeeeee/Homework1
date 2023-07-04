@@ -7,155 +7,155 @@ public:
 };
 
 class Triangle : public Figure {
-public:
-    Triangle(double a, double b, double c, double A, double B, double C) :
-        a(a), b(b), c(c), A(A), B(B), C(C) {}
+protected:
+    double a, b, c;
+    double A, B, C;
 
-    double get_a() const { return a; }
-    double get_b() const { return b; }
-    double get_c() const { return c; }
-    double get_A() const { return A; }
-    double get_B() const { return B; }
-    double get_C() const { return C; }
+public:
+    Triangle(double sideA, double sideB, double sideC, double angleA, double angleB, double angleC)
+        : a(sideA), b(sideB), c(sideC), A(angleA), B(angleB), C(angleC) {}
 
     void print_info() const override {
-        std::cout << "Треугольник:" << std::endl
-            << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl
-            << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
+        std::cout << "Треугольник:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
     }
-
-private:
-    double a, b, c, A, B, C;
 };
 
 class RightTriangle : public Triangle {
 public:
-    RightTriangle(double a, double b) : Triangle(a, b, std::sqrt(a* a + b * b), std::atan(a / b), std::atan(b / a), 90) {}
+    RightTriangle(double sideA, double sideB)
+        : Triangle(sideA, sideB, sqrt(sideA* sideA + sideB * sideB), atan(sideA / sideB) * 180 / M_PI,
+            atan(sideB / sideA) * 180 / M_PI, 90) {}
 
     void print_info() const override {
-        std::cout << "Прямоугольный треугольник:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << 90 << std::endl;
+        std::cout << "Прямоугольный треугольник:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
     }
 };
 
 class IsoscelesTriangle : public Triangle {
 public:
-    IsoscelesTriangle(double a, double b) : Triangle(a, b, a, std::acos((b / 2) / a) * 2, std::acos((b / 2) / a) * 2, std::acos((a* a + b * b / 4 - a * b / 2) / (a * a))) {}
+    IsoscelesTriangle(double equalSide, double baseSide, double baseAngle)
+        : Triangle(equalSide, equalSide, baseSide, baseAngle, baseAngle, 180 - 2 * baseAngle) {}
 
     void print_info() const override {
-        std::cout << "Равнобедренный треугольник:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << get_C() << std::endl;
+        std::cout << "Равнобедренный треугольник:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
     }
 };
 
 class EquilateralTriangle : public Triangle {
 public:
-    EquilateralTriangle(double a) : Triangle(a, a, a, 60, 60, 60) {}
+    EquilateralTriangle(double side)
+        : Triangle(side, side, side, 60, 60, 60) {}
 
     void print_info() const override {
-        std::cout << "Равносторонний треугольник:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << get_C() << std::endl;
+        std::cout << "Равносторонний треугольник:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
     }
 };
 
-class Quadrangle : public Figure {
-public:
-    Quadrangle(double a, double b, double c, double d, double A, double B, double C, double D) :
-        a(a), b(b), c(c), d(d), A(A), B(B), C(C), D(D) {}
+class Quadrilateral : public Figure {
+protected:
+    double a, b, c, d;
+    double A, B, C, D;
 
-    double get_a() const { return a; }
-    double get_b() const { return b; }
-    double get_c() const { return c; }
-    double get_d() const { return d; }
-    double get_A() const { return A; }
-    double get_B() const { return B; }
-    double get_C() const { return C; }
-    double get_D() const { return D; }
+public:
+    Quadrilateral(double sideA, double sideB, double sideC, double sideD, double angleA, double angleB, double angleC, double angleD)
+        : a(sideA), b(sideB), c(sideC), d(sideD), A(angleA), B(angleB), C(angleC), D(angleD) {}
 
     void print_info() const override {
-        std::cout << "Четырёхугольник:" << std::endl
-            << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl
-            << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
+        std::cout << "Четырёхугольник:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
     }
-
-private:
-    double a, b, c, d, A, B, C, D;
 };
 
-class Rectangle : public Quadrangle {
+class Rectangle : public Quadrilateral {
 public:
-    Rectangle(double a, double b) : Quadrangle(a, b, a, b, 90, 90, 90, 90) {}
+    Rectangle(double sideA, double sideB)
+        : Quadrilateral(sideA, sideB, sideA, sideB, 90, 90, 90, 90) {}
 
     void print_info() const override {
-        std::cout << "Прямоугольник:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << " d=" << get_d() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << get_C() << " D=" << get_D() << std::endl;
+        std::cout << "Прямоугольник:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
     }
 };
 
 class Square : public Rectangle {
 public:
-    Square(double a) : Rectangle(a, a) {}
+    Square(double side)
+        : Rectangle(side, side) {}
 
     void print_info() const override {
-        std::cout << "Квадрат:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << " d=" << get_d() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << get_C() << " D=" << get_D() << std::endl;
+        std::cout << "Квадрат:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
     }
 };
 
-class Parallelogram : public Quadrangle {
+class Parallelogram : public Quadrilateral {
 public:
-    Parallelogram(double a, double b, double A, double B) : Quadrangle(a, b, a, b, A, B, 180 - A, 180 - B) {}
+    Parallelogram(double sideA, double sideB, double angleA, double angleB)
+        : Quadrilateral(sideA, sideB, sideA, sideB, angleA, 180 - angleA, angleB, 180 - angleB) {}
 
     void print_info() const override {
-        std::cout << "Параллелограмм:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << " d=" << get_d() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << get_C() << " D=" << get_D() << std::endl;
+        std::cout << "Параллелограмм:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
     }
 };
 
 class Rhombus : public Parallelogram {
 public:
-    Rhombus(double a, double A) : Parallelogram(a, a, A, A) {}
+    Rhombus(double side, double angle)
+        : Parallelogram(side, side, angle, 180 - angle) {}
 
     void print_info() const override {
-        std::cout << "Ромб:" << std::endl
-            << "Стороны: a=" << get_a() << " b=" << get_b() << " c=" << get_c() << " d=" << get_d() << std::endl
-            << "Углы: A=" << get_A() << " B=" << get_B() << " C=" << get_C() << " D=" << get_D() << std::endl;
+        std::cout << "Ромб:" << std::endl;
+        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+        std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
     }
 };
 
+void print_info(const Figure* figure) {
+    figure->print_info();
+}
+
 int main() {
-    Triangle tr(10, 20, 15, 30, 60, 90);
-    tr.print_info();
+    setlocale(LC_ALL, "Russian");
+    Triangle triangle(10, 20, 30, 50, 60, 70);
+    print_info(&triangle);
 
-    RightTriangle rtr(3, 4);
-    rtr.print_info();
+    RightTriangle rightTriangle(10, 20);
+    print_info(&rightTriangle);
 
-    IsoscelesTriangle itr(5, 6);
-    itr.print_info();
+    IsoscelesTriangle isoscelesTriangle(10, 20, 50);
+    print_info(&isoscelesTriangle);
 
-    EquilateralTriangle etr(7);
-    etr.print_info();
+    EquilateralTriangle equilateralTriangle(30);
+    print_info(&equilateralTriangle);
 
-    Quadrangle q(5, 6, 7, 8, 80, 90, 100, 90);
-    q.print_info();
+    Quadrilateral quadrilateral(10, 20, 30, 40, 50, 60, 70, 80);
+    print_info(&quadrilateral);
 
-    Rectangle rect(10, 20);
-    rect.print_info();
+    Rectangle rectangle(10, 20);
+    print_info(&rectangle);
 
-    Square sq(15);
-    sq.print_info();
+    Square square(20);
+    print_info(&square);
 
-    Parallelogram p(5, 6, 45, 135);
-    p.print_info();
+    Parallelogram parallelogram(20, 30, 30, 40);
+    print_info(&parallelogram);
 
-    Rhombus rh(7, 60);
-    rh.print_info();
+    Rhombus rhombus(30, 30);
+    print_info(&rhombus);
 
     return 0;
 }
+
