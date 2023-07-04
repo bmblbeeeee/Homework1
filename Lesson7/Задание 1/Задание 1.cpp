@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 
-#define MODE 1
+#define MODE 0
 
 #ifdef MODE
 #if MODE == 0
@@ -8,45 +8,42 @@
 #elif MODE == 1
 #define BATTLE_MODE
 #else
-#error "Неизвестное значение MODE. Пожалуйста, установите корректное значение."
+#define UNKNOWN_MODE
 #endif
 #else
-#error "Необходимо определить MODE."
+#error "MODE is not defined. Please define MODE."
 #endif
 
 #ifdef TRAINING_MODE
-#pragma message("Работаю в режиме тренировки")
+#define MODE_MESSAGE "Работаю в режиме тренировки"
 #endif
 
 #ifdef BATTLE_MODE
-#include <iostream>
-
-int add(int a, int b)
-{
-    return a + b;
+void add(int a, int b) {
+    int sum = a + b;
+    std::cout << "Результат сложения: " << sum << std::endl;
 }
+#define MODE_MESSAGE "Работаю в боевом режиме"
+#endif
 
-#pragma message("Работаю в боевом режиме")
-
-int main()
-{
+int main() {
     setlocale(LC_ALL, "Russian");
+#ifdef MODE_MESSAGE
+    std::cout << MODE_MESSAGE << std::endl;
+#endif
+
+#ifdef BATTLE_MODE
     int num1, num2;
     std::cout << "Введите число 1: ";
     std::cin >> num1;
     std::cout << "Введите число 2: ";
     std::cin >> num2;
+    add(num1, num2);
+#endif
 
-    int result = add(num1, num2);
-
-    std::cout << "Результат сложения: " << result << std::endl;
+#ifdef UNKNOWN_MODE
+    std::cout << "Неизвестный режим. Завершение работы" << std::endl;
+#endif
 
     return 0;
 }
-#endif
-
-#ifndef TRAINING_MODE
-#ifndef BATTLE_MODE
-#pragma message("Неизвестный режим. Завершение работы")
-#endif
-#endif
