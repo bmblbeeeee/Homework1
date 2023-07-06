@@ -5,9 +5,10 @@
 
 class IsoscelesTriangle : public Triangle {
 public:
-    IsoscelesTriangle(int a, int b);
+    IsoscelesTriangle(double sideA, double sideB, double angleA, double angleB);
 
     void print_info() const override;
 };
 
 #endif // ISOSCELESTRIANGLE_H
+

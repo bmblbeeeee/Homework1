@@ -1,11 +1,11 @@
 #include "RightTriangle.h"
 #include <iostream>
 
-RightTriangle::RightTriangle(int sideA, int sideB) : sideA(sideA), sideB(sideB) {}
+RightTriangle::RightTriangle(double sideA, double sideB, double sideC, double angleA, double angleB)
+    : Triangle(sideA, sideB, sideC, angleA, angleB, 90) {}
 
-void RightTriangle::printInfo() const {
-    std::cout << "Прямоугольный треугольник:\n";
-    std::cout << "Стороны: a=" << sideA << " b=" << sideB << " c=" << sideC << '\n';
-    std::cout << "Углы: A=" << angleA << " B=" << angleB << " C=90\n";
+void RightTriangle::print_info() const {
+    std::cout << "Прямоугольный треугольник:" << std::endl;
+    std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl;
+    std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
 }
-

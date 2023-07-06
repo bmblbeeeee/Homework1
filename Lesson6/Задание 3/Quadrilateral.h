@@ -1,12 +1,18 @@
 #ifndef QUADRILATERAL_H
 #define QUADRILATERAL_H
 
-class Quadrilateral {
+#include "Figure.h"
+
+class Quadrilateral : public Figure {
+protected:
+    double a, b, c, d;
+    double A, B, C, D;
+
 public:
-    Quadrilateral();
-    virtual void print_info();
-    virtual double calculate_area();
+    Quadrilateral(double sideA, double sideB, double sideC, double sideD, double angleA, double angleB, double angleC, double angleD);
+
+    void print_info() const override;
 };
 
-#endif  // QUADRILATERAL_H
+#endif // QUADRILATERAL_H
 

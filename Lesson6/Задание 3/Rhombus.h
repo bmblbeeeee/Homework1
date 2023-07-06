@@ -1,15 +1,14 @@
 #ifndef RHOMBUS_H
 #define RHOMBUS_H
 
-#include "Quadrilateral.h"
+#include "Parallelogram.h"
 
-class Rhombus : public Quadrilateral {
+class Rhombus : public Parallelogram {
 public:
-    Rhombus(int side, int angle);
+    Rhombus(double side, double angleA, double angleB);
 
-    void print_info() const;
+    void print_info() const override;
 };
 
 #endif // RHOMBUS_H
-
 

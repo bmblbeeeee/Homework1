@@ -5,9 +5,10 @@
 
 class Rectangle : public Quadrilateral {
 public:
-    Rectangle(int width, int height);
+    Rectangle(double sideA, double sideB);
 
-    void print_info() const;
+    void print_info() const override;
 };
 
 #endif // RECTANGLE_H
+

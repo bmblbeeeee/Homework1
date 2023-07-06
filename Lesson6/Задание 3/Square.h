@@ -1,13 +1,14 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
-#include "Quadrilateral.h"
+#include "Rectangle.h"
 
-class Square : public Quadrilateral {
+class Square : public Rectangle {
 public:
-    Square(int side);
+    Square(double side);
 
-    void print_info() const;
+    void print_info() const override;
 };
 
 #endif // SQUARE_H
+

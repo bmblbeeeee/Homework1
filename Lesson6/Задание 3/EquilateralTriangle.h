@@ -5,9 +5,10 @@
 
 class EquilateralTriangle : public Triangle {
 public:
-    EquilateralTriangle(int a);
+    EquilateralTriangle(double side);
 
     void print_info() const override;
 };
 
-#endif
+#endif // EQUILATERALTRIANGLE_H
+

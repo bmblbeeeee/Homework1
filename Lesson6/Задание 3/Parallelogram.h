@@ -5,22 +5,10 @@
 
 class Parallelogram : public Quadrilateral {
 public:
-    Parallelogram(int a, int b, int angle);
-    void print_info();
-    double calculate_area();
-private:
-    int sideA;
-    int sideB;
-    int sideC;
-    int sideD;
-    int angleA;
-    int angleB;
-    int angleC;
-    int angleD;
+    Parallelogram(double sideB, double sideC, double angleA, double angleB);
+
+    void print_info() const override;
 };
 
-#endif  // PARALLELOGRAM_H
-
-
-
+#endif // PARALLELOGRAM_H
 

@@ -5,13 +5,10 @@
 
 class RightTriangle : public Triangle {
 public:
-    RightTriangle(int a, int b);
+    RightTriangle(double sideA, double sideB, double sideC, double angleA, double angleB);
 
-    void print_info() const;
+    void print_info() const override;
 };
 
 #endif // RIGHTTRIANGLE_H
-
-
-
 

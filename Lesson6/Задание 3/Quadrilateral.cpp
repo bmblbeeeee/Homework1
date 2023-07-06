@@ -1,22 +1,11 @@
 #include "Quadrilateral.h"
 #include <iostream>
 
-Quadrilateral::Quadrilateral(int a, int b, int c, int d, int A, int B, int C, int D)
-    : sideA(a), sideB(b), sideC(c), sideD(d), angleA(A), angleB(B), angleC(C), angleD(D) {}
-
-int Quadrilateral::getSideA() const { return sideA; }
-int Quadrilateral::getSideB() const { return sideB; }
-int Quadrilateral::getSideC() const { return sideC; }
-int Quadrilateral::getSideD() const { return sideD; }
-
-int Quadrilateral::getAngleA() const { return angleA; }
-int Quadrilateral::getAngleB() const { return angleB; }
-int Quadrilateral::getAngleC() const { return angleC; }
-int Quadrilateral::getAngleD() const { return angleD; }
+Quadrilateral::Quadrilateral(double sideA, double sideB, double sideC, double sideD, double angleA, double angleB, double angleC, double angleD)
+    : a(sideA), b(sideB), c(sideC), d(sideD), A(angleA), B(angleB), C(angleC), D(angleD) {}
 
 void Quadrilateral::print_info() const {
-    std::cout << "Четырехугольник:" << std::endl;
-    std::cout << "Стороны: a=" << sideA << " b=" << sideB << " c=" << sideC << " d=" << sideD << std::endl;
-    std::cout << "Углы: A=" << angleA << " B=" << angleB << " C=" << angleC << " D=" << angleD << std::endl;
-    std::cout << std::endl;
+    std::cout << "Четырёхугольник:" << std::endl;
+    std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+    std::cout << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
 }

@@ -1,26 +1,18 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-class Triangle {
+#include "Figure.h"
+
+class Triangle : public Figure {
 protected:
-    int sideA, sideB, sideC;
-    int angleA, angleB, angleC;
+    double a, b, c;
+    double A, B, C;
 
 public:
-    Triangle(int a, int b, int c, int A, int B, int C);
+    Triangle(double sideA, double sideB, double sideC, double angleA, double angleB, double angleC);
 
-    int getSideA() const;
-    int getSideB() const;
-    int getSideC() const;
-
-    int getAngleA() const;
-    int getAngleB() const;
-    int getAngleC() const;
-
-    virtual void print_info() const;
+    void print_info() const override;
 };
 
 #endif // TRIANGLE_H
-
-
 
